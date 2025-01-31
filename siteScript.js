@@ -1,5 +1,5 @@
-import itemData from './item-data.js'; // Import your item data
-import heroStats from './hero-stats.js'; // Import your hero stats
+import itemData from './itemData.js'; // Import your item data
+import heroStats from './heroStats.js'; // Import your hero stats
 
 document.addEventListener('DOMContentLoaded', () => { // Wait for the DOM to load
 
