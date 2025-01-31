@@ -1096,4 +1096,4 @@ const itemData = {
   },
 };
 
-export const itemData;
+export default itemData;
