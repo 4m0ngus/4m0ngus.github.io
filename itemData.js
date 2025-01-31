@@ -2,7 +2,7 @@ const itemData = {
   "[NO ITEM]": {
     name: "[NO ITEM]",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -17,7 +17,7 @@ const itemData = {
   "Wooden Sword": {
     name: "Wooden Sword",
     ap: 0.0,
-    ada: 7.0,
+    ad: 7.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -32,7 +32,7 @@ const itemData = {
   "Light Slayer": {
     name: "Light Slayer",
     ap: 0.0,
-    ada: 12.0,
+    ad: 12.0,
     as: 0.1,
     armor: 0.0,
     ls: 0.0,
@@ -47,7 +47,7 @@ const itemData = {
   "Shadow Slayer": {
     name: "Shadow Slayer",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.2,
     armor: 0.0,
     ls: 0.0,
@@ -62,7 +62,7 @@ const itemData = {
   "Corrupted Light Slayer": {
     name: "Corrupted Light Slayer",
     ap: 0.0,
-    ada: 10.0,
+    ad: 10.0,
     as: 0.16,
     armor: 0.0,
     ls: 12.0,
@@ -72,12 +72,12 @@ const itemData = {
     hp: 0.0,
     mr: 0.0,
     hpr: 0.0,
-    passive: "16% LS, 10 AD ALLIES"
+    passive: "16% LS, 10 ad ALLIES"
   },
   "Spiked Mace": {
     name: "Spiked Mace",
     ap: 0.0,
-    ada: 12.0,
+    ad: 12.0,
     as: 0.18,
     armor: 0.0,
     ls: 0.0,
@@ -92,7 +92,7 @@ const itemData = {
   "Katana": {
     name: "Katana",
     ap: 0.0,
-    ada: 16.0,
+    ad: 16.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -107,7 +107,7 @@ const itemData = {
   "Demon Sabre": {
     name: "Demon Sabre",
     ap: 0.0,
-    ada: 20.0,
+    ad: 20.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -122,7 +122,7 @@ const itemData = {
   "Corrupted Katana": {
     name: "Corrupted Katana",
     ap: 0.0,
-    ada: 21.0,
+    ad: 21.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -137,7 +137,7 @@ const itemData = {
   "Divine Katana": {
     name: "Divine Katana",
     ap: 0.0,
-    ada: 20.0,
+    ad: 20.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -152,7 +152,7 @@ const itemData = {
   "Sword of Iron Warriors": {
     name: "Sword of Iron Warriors",
     ap: 0.0,
-    ada: 10.0,
+    ad: 10.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -167,7 +167,7 @@ const itemData = {
   "Sword of the Frozen Emperor": {
     name: "Sword of the Frozen Emperor",
     ap: 0.0,
-    ada: 15.0,
+    ad: 15.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -182,7 +182,7 @@ const itemData = {
   "Divine Sword": {
     name: "Divine Sword",
     ap: 0.0,
-    ada: 12.0,
+    ad: 12.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -197,7 +197,7 @@ const itemData = {
   "Wooden Bow": {
     name: "Wooden Bow",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.12,
     armor: 0.0,
     ls: 0.0,
@@ -212,7 +212,7 @@ const itemData = {
   "Reckless Longbow": {
     name: "Reckless Longbow",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.3,
     armor: 0.0,
     ls: 0.0,
@@ -227,7 +227,7 @@ const itemData = {
   "Berserkers Bow": {
     name: "Berserkers Bow",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.35,
     armor: 0.0,
     ls: 18.0,
@@ -242,7 +242,7 @@ const itemData = {
   "Nimble Longbow": {
     name: "Nimble Longbow",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.5,
     armor: 0.0,
     ls: 0.0,
@@ -252,12 +252,12 @@ const itemData = {
     hp: 0.0,
     mr: 0.0,
     hpr: 0.0,
-    passive: "AOE RADIUS, PROJECTILE RANGE +10 PX, PROJECTILE SPEED +35%"
+    passive: "AOE RadIUS, PROJECTILE RANGE +10 PX, PROJECTILE SPEED +35%"
   },
   "Hunters Longbow": {
     name: "Hunters Longbow",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.45,
     armor: 0.0,
     ls: 0.0,
@@ -272,7 +272,7 @@ const itemData = {
   "Poison Bow": {
     name: "Poison Bow",
     ap: 0.0,
-    ada: 4.0,
+    ad: 4.0,
     as: 0.15,
     armor: 0.0,
     ls: 0.0,
@@ -287,7 +287,7 @@ const itemData = {
   "Magical Bow": {
     name: "Magical Bow",
     ap: 12.0,
-    ada: 9.0,
+    ad: 9.0,
     as: 0.2,
     armor: 0.0,
     ls: 0.0,
@@ -302,7 +302,7 @@ const itemData = {
   "Corrupted Longbow": {
     name: "Corrupted Longbow",
     ap: 0.0,
-    ada: 10.0,
+    ad: 10.0,
     as: 0.3,
     armor: 0.0,
     ls: 0.0,
@@ -317,7 +317,7 @@ const itemData = {
   "Kirins Bow": {
     name: "Kirins Bow",
     ap: 0.0,
-    ada: 4.0,
+    ad: 4.0,
     as: 0.35,
     armor: 0.0,
     ls: 0.0,
@@ -332,7 +332,7 @@ const itemData = {
   "Buckler": {
     name: "Buckler",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 2.0,
     ls: 0.0,
@@ -347,7 +347,7 @@ const itemData = {
   "Enduring Shield": {
     name: "Enduring Shield",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 3.0,
     ls: 0.0,
@@ -362,7 +362,7 @@ const itemData = {
   "Garuns Defender": {
     name: "Garuns Defender",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 5.0,
     ls: 0.0,
@@ -377,7 +377,7 @@ const itemData = {
   "Vampiric Shield": {
     name: "Vampiric Shield",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 3.0,
     ls: 0.0,
@@ -392,7 +392,7 @@ const itemData = {
   "Buckler of Iron Warriors": {
     name: "Buckler of Iron Warriors",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 3.0,
     ls: 0.0,
@@ -407,7 +407,7 @@ const itemData = {
   "Plate Shield": {
     name: "Plate Shield",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 5.0,
     ls: 0.0,
@@ -422,7 +422,7 @@ const itemData = {
   "Spike Shield": {
     name: "Spike Shield",
     ap: 0.0,
-    ada: 10.0,
+    ad: 10.0,
     as: 0.0,
     armor: 3.0,
     ls: 0.0,
@@ -437,7 +437,7 @@ const itemData = {
   "Enchanted Shield": {
     name: "Enchanted Shield",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -452,7 +452,7 @@ const itemData = {
   "Kirins Defender": {
     name: "Kirins Defender",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -467,7 +467,7 @@ const itemData = {
   "Shield of Defiance": {
     name: "Shield of Defiance",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -482,7 +482,7 @@ const itemData = {
   "Divine Shield": {
     name: "Divine Shield",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -497,7 +497,7 @@ const itemData = {
   "Novice Staff": {
     name: "Novice Staff",
     ap: 9.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -512,7 +512,7 @@ const itemData = {
   "Wizard Staff": {
     name: "Wizard Staff",
     ap: 18.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -527,7 +527,7 @@ const itemData = {
   "Kirins Staff": {
     name: "Kirins Staff",
     ap: 25.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -542,7 +542,7 @@ const itemData = {
   "Vampiric Rod": {
     name: "Vampiric Rod",
     ap: 19.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -557,7 +557,7 @@ const itemData = {
   "Corrupted Staff": {
     name: "Corrupted Staff",
     ap: 25.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -572,7 +572,7 @@ const itemData = {
   "Staff of Iron Warriors": {
     name: "Staff of Iron Warriors",
     ap: 10.0,
-    ada: 10.0,
+    ad: 10.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -587,7 +587,7 @@ const itemData = {
   "Magic Harpoon": {
     name: "Magic Harpoon",
     ap: 18.0,
-    ada: 15.0,
+    ad: 15.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -602,7 +602,7 @@ const itemData = {
   "Orchid of Malevolence": {
     name: "Orchid of Malevolence",
     ap: 15.0,
-    ada: 15.0,
+    ad: 15.0,
     as: 0.15,
     armor: 0.0,
     ls: 0.0,
@@ -617,7 +617,7 @@ const itemData = {
   "Rod of Nature": {
     name: "Rod of Nature",
     ap: 12.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -632,7 +632,7 @@ const itemData = {
   "Staff of the Frozen Empress": {
     name: "Staff of the Frozen Empress",
     ap: 16.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -647,7 +647,7 @@ const itemData = {
   "Burning Rod": {
     name: "Burning Rod",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -662,7 +662,7 @@ const itemData = {
   "Divine Staff": {
     name: "Divine Staff",
     ap: 14.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -677,7 +677,7 @@ const itemData = {
   "Wooden Ring": {
     name: "Wooden Ring",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -692,7 +692,7 @@ const itemData = {
   "Ring of Regeneration": {
     name: "Ring of Regeneration",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -707,7 +707,7 @@ const itemData = {
   "Chronos Ring": {
     name: "Chronos Ring",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -722,7 +722,7 @@ const itemData = {
   "Plague Ring": {
     name: "Plague Ring",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -737,7 +737,7 @@ const itemData = {
   "Ring of the Frozen Empress": {
     name: "Ring of the Frozen Empress",
     ap: 18.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -747,12 +747,12 @@ const itemData = {
     hp: 120.0,
     mr: 0.0,
     hpr: 3.0,
-    passive: "80 MAGIC DAMAGE, APPLIES FRIGID CURSE IF NOT ALREADY AFFECTED, IF ALREADY EFFECTED, FREEZES FOR 1.2 SECS"
+    passive: "80 MAGIC DAMAGE, APPLIES FRIGID CURSE IF NOT ALREadY AFFECTED, IF ALREadY EFFECTED, FREEZES FOR 1.2 SECS"
   },
   "Ring of Time": {
     name: "Ring of Time",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -767,7 +767,7 @@ const itemData = {
   "Corrupted Ring": {
     name: "Corrupted Ring",
     ap: 16.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -777,12 +777,12 @@ const itemData = {
     hp: 50.0,
     mr: 0.0,
     hpr: 0.0,
-    passive: "AOE RADIUS, PROJECTILE RANGE +10 PX, PROJECTILE SPEED +35%"
+    passive: "AOE RadIUS, PROJECTILE RANGE +10 PX, PROJECTILE SPEED +35%"
   },
   "Berserker Ring": {
     name: "Berserker Ring",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -797,7 +797,7 @@ const itemData = {
   "Demonic Ring": {
     name: "Demonic Ring",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.25,
     armor: 0.0,
     ls: 0.0,
@@ -807,12 +807,12 @@ const itemData = {
     hp: 100.0,
     mr: 0.0,
     hpr: 0.0,
-    passive: "[PHYSICAL] DECREASES ARMOR BY 40%. ALSO, GAIN STACKS OF DEMONIC POWER. PLAYER KILL = 5 STACKS, ASSIST = 2 STACKS, LAST HIT = 1 STACK, EACH STACK INCREASES AD BY 1. MAX STACKS: 20"
+    passive: "[PHYSICAL] DECREASES ARMOR BY 40%. ALSO, GAIN STACKS OF DEMONIC POWER. PLAYER KILL = 5 STACKS, ASSIST = 2 STACKS, LAST HIT = 1 STACK, EACH STACK INCREASES ad BY 1. MAX STACKS: 20"
   },
   "Divine Ring": {
     name: "Divine Ring",
     ap: 12.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -827,7 +827,7 @@ const itemData = {
   "Charming Pendant": {
     name: "Charming Pendant",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -842,7 +842,7 @@ const itemData = {
   "Garuns Charm": {
     name: "Garuns Charm",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -857,7 +857,7 @@ const itemData = {
   "Wizard Charm": {
     name: "Wizard Charm",
     ap: 15.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -872,7 +872,7 @@ const itemData = {
   "Corrupted Locket": {
     name: "Corrupted Locket",
     ap: 0.0,
-    ada: 10.0,
+    ad: 10.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -887,7 +887,7 @@ const itemData = {
   "Shirt": {
     name: "Shirt",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -902,7 +902,7 @@ const itemData = {
   "Apprentice Armor": {
     name: "Apprentice Armor",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -917,7 +917,7 @@ const itemData = {
   "Void Armor": {
     name: "Void Armor",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.3,
     armor: 3.0,
     ls: 0.0,
@@ -927,12 +927,12 @@ const itemData = {
     hp: 150.0,
     mr: 0.0,
     hpr: 0.0,
-    passive: "8 SECS INVIS. WHILE INVIS, +10 MS. IF ABILITY OR ITEM IS USED WHILE INVIS, INVIS WEARS OFF, +20 AD FOR SHORT DURATION."
+    passive: "8 SECS INVIS. WHILE INVIS, +10 MS. IF ABILITY OR ITEM IS USED WHILE INVIS, INVIS WEARS OFF, +20 ad FOR SHORT DURATION."
   },
   "Armor of the Frozen Emperor": {
     name: "Armor of the Frozen Emperor",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.3,
     armor: 3.0,
     ls: 0.0,
@@ -947,7 +947,7 @@ const itemData = {
   "Armor of Iron Warriors": {
     name: "Armor of Iron Warriors",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -962,7 +962,7 @@ const itemData = {
   "Plate Armor": {
     name: "Plate Armor",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -977,7 +977,7 @@ const itemData = {
   "Titans Armor": {
     name: "Titans Armor",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 3.0,
     ls: 0.0,
@@ -992,7 +992,7 @@ const itemData = {
   "Chest of Malevolence": {
     name: "Chest of Malevolence",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -1007,7 +1007,7 @@ const itemData = {
   "Boots": {
     name: "Boots",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -1022,7 +1022,7 @@ const itemData = {
   "[NO BOOTS]": {
     name: "[NO BOOTS]",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -1037,7 +1037,7 @@ const itemData = {
   "Wizard Shoes": {
     name: "Wizard Shoes",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -1052,7 +1052,7 @@ const itemData = {
   "Agility Boots": {
     name: "Agility Boots",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.28,
     armor: 0.0,
     ls: 0.0,
@@ -1067,7 +1067,7 @@ const itemData = {
   "Swift Boots": {
     name: "Swift Boots",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 0.0,
     ls: 0.0,
@@ -1082,7 +1082,7 @@ const itemData = {
   "Boots of Iron Warriors": {
     name: "Boots of Iron Warriors",
     ap: 0.0,
-    ada: 0.0,
+    ad: 0.0,
     as: 0.0,
     armor: 3.0,
     ls: 0.0,
