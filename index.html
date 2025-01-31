@@ -3,79 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Damage Calculator</title>
-    <link rel="stylesheet" href="style.css">  </head>
+    <title>Stats Dashboard</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .left-side, .right-side {
+            flex: 1;
+            padding: 20px;
+        }
+        .left-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .dropdown, .stats-list, .portrait, .checkbox-group {
+            margin-bottom: 10px;
+        }
+        .portrait {
+            grid-column: span 2;
+            text-align: center;
+        }
+        .portrait img {
+            width: 100px;
+            height: auto;
+        }
+        .right-side {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .stats-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .stats-columns div {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
 <body>
-    <h1>Damage Calculator</h1>
-
-    <div class="container">
-        <div class="item-slots">
+    <div class="left-side">
+        <div class="dropdown">
+            <label for="hero">Hero:</label>
+            <select id="hero">
+                <!-- Options -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="level">Level:</label>
+            <select id="level">
+                <!-- Options -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="boots">Boots:</label>
+            <select id="boots">
+                <!-- Options -->
+            </select>
+        </div>
+        <div class="dropdown">
             <label for="item1">Item 1:</label>
-            <select id="item1" name="item1">
-                <option value="">-- Select Item --</option>
-                </select>
-            </div>
-        <div class="item-slots">
+            <select id="item1">
+                <!-- Options -->
+            </select>
+        </div>
+        <div class="dropdown">
             <label for="item2">Item 2:</label>
-            <select id="item2" name="item2">
-                <option value="">-- Select Item --</option>
-                </select>
+            <select id="item2">
+                <!-- Options -->
+            </select>
         </div>
-        <div class="item-slots">
+        <div class="dropdown">
             <label for="item3">Item 3:</label>
-            <select id="item3" name="item3">
-                <option value="">-- Select Item --</option>
-                </select>
+            <select id="item3">
+                <!-- Options -->
+            </select>
         </div>
-        <div class="item-slots">
+        <div class="dropdown">
             <label for="item4">Item 4:</label>
-            <select id="item4" name="item4">
-                <option value="">-- Select Item --</option>
-                </select>
+            <select id="item4">
+                <!-- Options -->
+            </select>
         </div>
-        <div class="item-slots">
+        <div class="dropdown">
             <label for="item5">Item 5:</label>
-            <select id="item5" name="item5">
-                <option value="">-- Select Item --</option>
-                </select>
+            <select id="item5">
+                <!-- Options -->
+            </select>
         </div>
-        <div class="item-slots">
-            <label for="item6">Item 6:</label>
-            <select id="item6" name="item6">
-                <option value="">-- Select Item --</option>
-                </select>
+        <div class="dropdown">
+            <label for="talents">Talents:</label>
+            <select id="talents">
+                <!-- Options -->
+            </select>
         </div>
-
-        <div class="hero-slots">
-            <label for="attacker">Attacker:</label>
-            <select id="attacker" name="attacker">
-                <option value="">-- Select Hero --</option>
-                </select>
+        <div class="dropdown">
+            <label for="ability">Ability used:</label>
+            <select id="ability">
+                <!-- Options -->
+            </select>
         </div>
-
-        <div class="hero-slots">
-            <label for="defender">Defender:</label>
-            <select id="defender" name="defender">
-                <option value="">-- Select Hero --</option>
-                </select>
+        <div class="dropdown">
+            <label for="hits">Number of hits:</label>
+            <select id="hits">
+                <!-- Options -->
+            </select>
         </div>
-
-        <div class="input-group">
-            <label for="hits">Number of Hits:</label>
-            <input type="number" id="hits" name="hits" value="1" min="1">
+        <div class="checkbox-group">
+            <label for="crit">Crit?</label>
+            <input type="checkbox" id="crit">
         </div>
-
-        <div class="input-group">
-            <label for="crit">Critical Hit:</label>
-            <input type="checkbox" id="crit" name="crit">
+        <div class="portrait">
+            <img src="hero-portrait.png" alt="Hero Portrait">
         </div>
-
-        <button id="calculate">Calculate</button>
-
-        <div id="results">
-            </div>
+        <div class="stats-list">
+            <p>AD: <span id="ad"></span></p>
+            <p>AP: <span id="ap"></span></p>
+            <p>AS: <span id="as"></span></p>
+            <p>AH: <span id="ah"></span></p>
+            <p>CDR%: <span id="cdr"></span></p>
+            <p>CRIT RATE: <span id="crit-rate"></span></p>
+            <p>ARMOR: <span id="armor"></span></p>
+            <p>MR: <span id="mr"></span></p>
+            <p>MS: <span id="ms"></span></p>
+            <p>HPR: <span id="hpr"></span></p>
+            <p>HP: <span id="hp"></span></p>
+        </div>
     </div>
-
-    <script src="script.js"></script>
+    <div class="right-side">
+        <div class="stats-columns">
+            <div>
+                <p>Physical Damage Reduction</p>
+                <p>Magical Damage Reduction</p>
+                <p>Physical Damage Dealt</p>
+                <p>Magical Damage Dealt</p>
+                <p>Total Damage Dealt</p>
+            </div>
+            <div>
+                <!-- Space for displaying stats -->
+            </div>
+            <div>
+                <!-- Space for displaying stats -->
+            </div>
+        </div>
+    </div>
 </body>
 </html>
