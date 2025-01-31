@@ -1,12 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Calculator</title>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Damage Calculator</title>
+    <link rel="stylesheet" href="style.css">  </head>
 <body>
+    <h1>Damage Calculator</h1>
 
-  <script type="module" src="formulas.js"></script>
-  <script type="module" src="calculator.js"></script>
+    <div class="container">
+        <div class="item-slots">
+            <label for="item1">Item 1:</label>
+            <select id="item1" name="item1">
+                <option value="">-- Select Item --</option>
+                </select>
+            </div>
+        <div class="item-slots">
+            <label for="item2">Item 2:</label>
+            <select id="item2" name="item2">
+                <option value="">-- Select Item --</option>
+                </select>
+        </div>
+        <div class="item-slots">
+            <label for="item3">Item 3:</label>
+            <select id="item3" name="item3">
+                <option value="">-- Select Item --</option>
+                </select>
+        </div>
+        <div class="item-slots">
+            <label for="item4">Item 4:</label>
+            <select id="item4" name="item4">
+                <option value="">-- Select Item --</option>
+                </select>
+        </div>
+        <div class="item-slots">
+            <label for="item5">Item 5:</label>
+            <select id="item5" name="item5">
+                <option value="">-- Select Item --</option>
+                </select>
+        </div>
+        <div class="item-slots">
+            <label for="item6">Item 6:</label>
+            <select id="item6" name="item6">
+                <option value="">-- Select Item --</option>
+                </select>
+        </div>
 
+        <div class="hero-slots">
+            <label for="attacker">Attacker:</label>
+            <select id="attacker" name="attacker">
+                <option value="">-- Select Hero --</option>
+                </select>
+        </div>
+
+        <div class="hero-slots">
+            <label for="defender">Defender:</label>
+            <select id="defender" name="defender">
+                <option value="">-- Select Hero --</option>
+                </select>
+        </div>
+
+        <div class="input-group">
+            <label for="hits">Number of Hits:</label>
+            <input type="number" id="hits" name="hits" value="1" min="1">
+        </div>
+
+        <div class="input-group">
+            <label for="crit">Critical Hit:</label>
+            <input type="checkbox" id="crit" name="crit">
+        </div>
+
+        <button id="calculate">Calculate</button>
+
+        <div id="results">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
