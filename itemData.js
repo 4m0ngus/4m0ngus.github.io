@@ -1095,3 +1095,5 @@ const itemData = {
     passive: ""
   },
 };
+
+export const itemData;
