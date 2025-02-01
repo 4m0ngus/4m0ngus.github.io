@@ -126,7 +126,7 @@ const heroStats = {
     'AS': { 'base': 1.1, 'scaling': 0.02 },
     'HPR': { 'base': 1.0, 'scaling': 0.4 },
     'Armor': { 'base': 1.0, 'scaling': 0.4 },
-    'MS': { 'base': 70.0, 'scaling': 0.0 },
+    'MS': { 'base': 72.0, 'scaling': 0.0 },
     'MR': { 'base': 2.0, 'scaling': 0.0 }
   },
   'Prim': {
@@ -140,12 +140,12 @@ const heroStats = {
     'MR': { 'base': 2.0, 'scaling': 0.0 }
   },
   'Seer': {
-    'HP': { 'base': 540.0, 'scaling': 24.0 },
+    'HP': { 'base': 550.0, 'scaling': 24.0 },
     'AD': { 'base': 50.0, 'scaling': 2.0 },
     'AP': { 'base': 0.0, 'scaling': 0.0 },
     'AS': { 'base': 0.75, 'scaling': 0.0 },
-    'HPR': { 'base': 1.5, 'scaling': 0.4 },
-    'Armor': { 'base': 1.5, 'scaling': 0.4 },
+    'HPR': { 'base': 1.5, 'scaling': 0.5 },
+    'Armor': { 'base': 2, 'scaling': 0.5 },
     'MS': { 'base': 72.0, 'scaling': 0.0 },
     'MR': { 'base': 2.0, 'scaling': 0.0 }
   },
