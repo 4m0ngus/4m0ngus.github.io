@@ -37,28 +37,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateStats(hero, level, items) {
         if (!heroStats[hero]) return null;
-
+    
         let calculatedStats = {};
         Object.keys(heroStats[hero]).forEach(stat => {
             calculatedStats[stat] = heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling;
         });
-
-        // Apply item stats
+    
+        // Apply item stats (case-sensitive fix)
         items.forEach(item => {
             if (itemData[item]) {
                 Object.keys(itemData[item]).forEach(stat => {
-                    if (calculatedStats[stat] !== undefined) {
-                        calculatedStats[stat] += itemData[item][stat];
+                    const statUpper = stat.toUpperCase(); // Convert item stat to uppercase to match heroStats
+                    if (calculatedStats[statUpper] !== undefined) {
+                        calculatedStats[statUpper] += itemData[item][stat];  
                     }
                 });
             }
         });
-
+    
         // Correct HPR calculation using external formula
         calculatedStats.HPR = calculateHealthRegeneration(calculatedStats);
-
+    
         return calculatedStats;
     }
+    
 
     function updateHeroStats(heroId, levelId, statPrefix, itemPrefix) {
         const hero = document.getElementById(heroId).value;
