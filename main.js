@@ -1,7 +1,7 @@
 import itemData from './itemData.js';
 import bootsData from './bootsData.js';
 import heroStats from './heroStats.js';
-import { calculateHPR } from './formulas.js'; // Import HPR formula
+import { calculateHealthRegeneration } from './formulas.js'; // Import HPR formula
 
 document.addEventListener('DOMContentLoaded', () => {
     function populateDropdown(id, dataObj) {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let calculatedStats = {};
         Object.keys(heroStats[hero]).forEach(stat => {
-            if(stat === 'HPR') return calculateHPR(heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling);
+            if(stat === 'HPR') return calculateHealthRegeneration (heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling);
             calculatedStats[stat] = heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling;
         });
 
