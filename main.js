@@ -5,7 +5,7 @@ import heroStats from './heroStats.js'; // Import hero stats
 document.addEventListener('DOMContentLoaded', () => {
     function populateDropdown(id, data) {
         const select = document.getElementById(id);
-        select.innerHTML = '';
+        select.innerHTML = ''; // Clear existing options
         data.forEach(item => {
             const option = document.createElement('option');
             option.value = item;
@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Populate hero dropdowns
+    // Extract hero names from heroStats
     const heroNames = Object.keys(heroStats);
+    
+    // Populate hero dropdowns
     populateDropdown('hero1', heroNames);
     populateDropdown('hero2', heroNames);
 
@@ -29,14 +31,28 @@ document.addEventListener('DOMContentLoaded', () => {
         populateDropdown(`item2_${i}`, itemData);
     }
 
-    // Update ability dropdown based on selected attacking hero
-    document.getElementById('hero1').addEventListener('change', function () {
-        const selectedHero = this.value;
-        if (heroStats[selectedHero] && heroStats[selectedHero].abilities) {
-            populateDropdown('ability', heroStats[selectedHero].abilities);
-        }
-    });
+    // Function to update stats when a hero is selected
+    function updateHeroStats(heroId, statPrefix) {
+        const selectedHero = document.getElementById(heroId).value;
+        const stats = heroStats[selectedHero];
 
-    // Initialize abilities for first hero
+        if (stats) {
+            document.getElementById(`${statPrefix}hp`).textContent = stats.HP.base;
+            document.getElementById(`${statPrefix}ad`).textContent = stats.AD.base;
+            document.getElementById(`${statPrefix}ap`).textContent = stats.AP.base;
+            document.getElementById(`${statPrefix}as`).textContent = stats.AS.base;
+            document.getElementById(`${statPrefix}hpr`).textContent = stats.HPR.base;
+            document.getElementById(`${statPrefix}armor`).textContent = stats.Armor.base;
+            document.getElementById(`${statPrefix}ms`).textContent = stats.MS.base;
+            document.getElementById(`${statPrefix}mr`).textContent = stats.MR.base;
+        }
+    }
+
+    // Add event listeners to update hero stats when a hero is selected
+    document.getElementById('hero1').addEventListener('change', () => updateHeroStats('hero1', 'hero1-'));
+    document.getElementById('hero2').addEventListener('change', () => updateHeroStats('hero2', 'hero2-'));
+
+    // Initialize stats for the first hero selection
     document.getElementById('hero1').dispatchEvent(new Event('change'));
+    document.getElementById('hero2').dispatchEvent(new Event('change'));
 });
