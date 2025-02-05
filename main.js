@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = document.createElement('option');
             option.value = i;
             option.textContent = `Level ${i}`;
-            select.appendChild(option); 
+            select.appendChild(option);
         }
         select.value = 1;
     }
@@ -40,20 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let calculatedStats = {};
         Object.keys(heroStats[hero]).forEach(stat => {
-            if(stat === 'HPR') return calculateHealthRegeneration (heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling);
             calculatedStats[stat] = heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling;
         });
 
         // Apply item stats
         items.forEach(item => {
-            if (itemData[item] && itemData[item].bonusStats) {
-                Object.keys(itemData[item].bonusStats).forEach(stat => {
+            if (itemData[item]) {
+                Object.keys(itemData[item]).forEach(stat => {
                     if (calculatedStats[stat] !== undefined) {
-                        calculatedStats[stat] += itemData[item].bonusStats[stat];
+                        calculatedStats[stat] += itemData[item][stat];
                     }
                 });
             }
         });
+
+        // Correct HPR calculation using external formula
+        calculatedStats.HPR = calculateHealthRegeneration(calculatedStats);
 
         return calculatedStats;
     }
