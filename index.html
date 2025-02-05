@@ -113,34 +113,8 @@
             <label for="item2_5">Item 5:</label>
             <select id="item2_5"></select>
         </div>
-        <div class="stats-list1">
-            <p>AD: <span id="ad"></span></p>
-            <p>AP: <span id="ap"></span></p>
-            <p>AS: <span id="as"></span></p>
-            <p>AH: <span id="ah"></span></p>
-            <p>CDR%: <span id="cdr"></span></p>
-            <p>CRIT RATE: <span id="crit-rate"></span></p>
-            <p>ARMOR: <span id="armor"></span></p>
-            <p>MR: <span id="mr"></span></p>
-            <p>MS: <span id="ms"></span></p>
-            <p>HPR: <span id="hpr"></span></p>
-            <p>HP: <span id="hp"></span></p>
-        </div>
-    <div class="stats-list2">
-            <p>AD: <span id="ad"></span></p>
-            <p>AP: <span id="ap"></span></p>
-            <p>AS: <span id="as"></span></p>
-            <p>AH: <span id="ah"></span></p>
-            <p>CDR%: <span id="cdr"></span></p>
-            <p>CRIT RATE: <span id="crit-rate"></span></p>
-            <p>ARMOR: <span id="armor"></span></p>
-            <p>MR: <span id="mr"></span></p>
-            <p>MS: <span id="ms"></span></p>
-            <p>HPR: <span id="hpr"></span></p>
-            <p>HP: <span id="hp"></span></p>
-        </div>
     </div>
-    
+    <script type="module" src="main.js"></script>
     <div class="right-side">
         <div class="stats-columns">
             <div>
@@ -160,46 +134,3 @@
     </div>
 </body>
 </html>
-<script>
-    // Sample data (Replace with actual parsed JSON from your JS files)
-    import { heroes } from './heroes.js';
-    import { items } from './items.js';
-    const heroData = heroes;
-    const itemData = items;
-    
-    // Populate Dropdown Function
-    function populateDropdown(id, data) {
-        const select = document.getElementById(id);
-        select.innerHTML = ''; // Clear existing options
-        data.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item;
-            option.textContent = item;
-            select.appendChild(option);
-        });
-    }
-
-    // Populate Heroes
-    populateDropdown("hero1", Object.keys(heroData));
-    populateDropdown("hero2", Object.keys(heroData));
-
-    // Populate Items and Boots
-    for (let i = 1; i <= 5; i++) {
-        populateDropdown(`item1_${i}`, itemData);
-        populateDropdown(`item2_${i}`, itemData);
-    }
-    populateDropdown("boots1", itemData);
-    populateDropdown("boots2", itemData);
-
-    // Populate Abilities when a hero is selected
-    document.getElementById("hero1").addEventListener("change", function() {
-        const selectedHero = this.value;
-        if (heroData[selectedHero]) {
-            populateDropdown("ability", heroData[selectedHero].abilities);
-        }
-    });
-
-    // Initialize abilities for first hero
-    document.getElementById("hero1").dispatchEvent(new Event("change"));
-</script>
-
