@@ -37,7 +37,6 @@
             margin: 5px 0;
         }
         .portrait {
-            grid-column: span 2;
             text-align: center;
         }
         .portrait img {
@@ -68,64 +67,51 @@
 </head>
 <body>
     <div class="left-side">
-        <div class="dropdown">
+        <div>
             <label for="hero1">Attacking Hero:</label>
             <select id="hero1"></select>
-        </div>
-        <div class="dropdown">
-            <label for="hero2">Defending Hero:</label>
-            <select id="hero2"></select>
-        </div>
-        <div class="dropdown">
-            <label for="level">Level:</label>
-            <select id="level"></select>
-        </div>
-        <div class="dropdown">
-            <label for="boots">Boots:</label>
-            <select id="boots"></select>
-        </div>
-        <div class="dropdown" id="items">
-            <label for="item1">Item 1:</label>
-            <select id="item1"></select>
-            <label for="item2">Item 2:</label>
-            <select id="item2"></select>
-            <label for="item3">Item 3:</label>
-            <select id="item3"></select>
-            <label for="item4">Item 4:</label>
-            <select id="item4"></select>
-            <label for="item5">Item 5:</label>
-            <select id="item5"></select>
-        </div>
-        <div class="dropdown">
-            <label for="talents">Talents:</label>
-            <select id="talents"></select>
-        </div>
-        <div class="dropdown">
+            <div class="portrait">
+                <img id="hero-portrait1" src="hero-portrait.png" alt="Attacking Hero Portrait">
+            </div>
+            <label for="boots1">Boots:</label>
+            <select id="boots1"></select>
+            <label for="talents1">Talents:</label>
+            <select id="talents1"></select>
+            <label for="item1_1">Item 1:</label>
+            <select id="item1_1"></select>
+            <label for="item1_2">Item 2:</label>
+            <select id="item1_2"></select>
+            <label for="item1_3">Item 3:</label>
+            <select id="item1_3"></select>
+            <label for="item1_4">Item 4:</label>
+            <select id="item1_4"></select>
+            <label for="item1_5">Item 5:</label>
+            <select id="item1_5"></select>
             <label for="ability">Ability used:</label>
             <select id="ability"></select>
-        </div>
-        <div class="checkbox-group">
             <label for="crit">Crit?</label>
             <input type="checkbox" id="crit">
         </div>
-        <div class="portrait">
-            <img id="hero-portrait1" src="hero-portrait.png" alt="Attacking Hero Portrait">
-        </div>
-        <div class="portrait">
-            <img id="hero-portrait2" src="hero-portrait.png" alt="Defending Hero Portrait">
-        </div>
-        <div class="stats-list">
-            <p>AD: <span id="ad"></span></p>
-            <p>AP: <span id="ap"></span></p>
-            <p>AS: <span id="as"></span></p>
-            <p>AH: <span id="ah"></span></p>
-            <p>CDR%: <span id="cdr"></span></p>
-            <p>CRIT RATE: <span id="crit-rate"></span></p>
-            <p>ARMOR: <span id="armor"></span></p>
-            <p>MR: <span id="mr"></span></p>
-            <p>MS: <span id="ms"></span></p>
-            <p>HPR: <span id="hpr"></span></p>
-            <p>HP: <span id="hp"></span></p>
+        <div>
+            <label for="hero2">Defending Hero:</label>
+            <select id="hero2"></select>
+            <div class="portrait">
+                <img id="hero-portrait2" src="hero-portrait.png" alt="Defending Hero Portrait">
+            </div>
+            <label for="boots2">Boots:</label>
+            <select id="boots2"></select>
+            <label for="talents2">Talents:</label>
+            <select id="talents2"></select>
+            <label for="item2_1">Item 1:</label>
+            <select id="item2_1"></select>
+            <label for="item2_2">Item 2:</label>
+            <select id="item2_2"></select>
+            <label for="item2_3">Item 3:</label>
+            <select id="item2_3"></select>
+            <label for="item2_4">Item 4:</label>
+            <select id="item2_4"></select>
+            <label for="item2_5">Item 5:</label>
+            <select id="item2_5"></select>
         </div>
     </div>
     <div class="right-side">
