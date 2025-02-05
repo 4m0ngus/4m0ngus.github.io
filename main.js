@@ -1,6 +1,7 @@
 import itemData from './itemData.js';
 import bootsData from './bootsData.js';
 import heroStats from './heroStats.js';
+import { calculateHPR } from './formulas.js'; // Import HPR formula
 
 document.addEventListener('DOMContentLoaded', () => {
     function populateDropdown(id, dataObj) {
@@ -20,13 +21,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function populateLevelDropdown(id) {
         const select = document.getElementById(id);
+        if (!select) {
+            console.error(`Dropdown with id ${id} not found.`);
+            return;
+        }
         select.innerHTML = '';
         for (let i = 1; i <= 12; i++) {
             const option = document.createElement('option');
             option.value = i;
-            option.textContent = i;
+            option.textContent = `Level ${i}`;
             select.appendChild(option);
         }
+        select.value = 1;
     }
 
     function calculateStats(hero, level, items) {
@@ -48,12 +54,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Correct HPR calculation using external formula
+        calculatedStats.HPR = calculateHPR(calculatedStats);
+
         return calculatedStats;
     }
 
     function updateHeroStats(heroId, levelId, statPrefix, itemPrefix) {
         const hero = document.getElementById(heroId).value;
-        const level = parseInt(document.getElementById(levelId).value);
+        const level = parseInt(document.getElementById(levelId).value) || 1;
         const items = [];
         for (let i = 1; i <= 5; i++) {
             items.push(document.getElementById(`${itemPrefix}${i}`).value);
@@ -70,36 +79,28 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Populate dropdowns
-    populateDropdown('hero1', heroStats);
-    populateDropdown('hero2', heroStats);
-    populateDropdown('boots1', bootsData);
-    populateDropdown('boots2', bootsData);
-    populateDropdown('item1_1', itemData);
-    populateDropdown('item1_2', itemData);
-    populateDropdown('item1_3', itemData);
-    populateDropdown('item1_4', itemData);
-    populateDropdown('item1_5', itemData);
-    populateDropdown('item2_1', itemData);
-    populateDropdown('item2_2', itemData);
-    populateDropdown('item2_3', itemData);
-    populateDropdown('item2_4', itemData);
-    populateDropdown('item2_5', itemData);
-    populateLevelDropdown('level1');
-    populateLevelDropdown('level2');
+    function initializeHero(heroId, levelId, statPrefix, itemPrefix) {
+        populateDropdown(heroId, heroStats);
+        populateLevelDropdown(levelId);
+        populateDropdown(`${itemPrefix}1`, itemData);
+        populateDropdown(`${itemPrefix}2`, itemData);
+        populateDropdown(`${itemPrefix}3`, itemData);
+        populateDropdown(`${itemPrefix}4`, itemData);
+        populateDropdown(`${itemPrefix}5`, itemData);
+        populateDropdown(`${heroId.replace("hero", "boots")}`, bootsData);
 
-    // Event listeners for updating stats
-    document.getElementById('hero1').addEventListener('change', () => updateHeroStats('hero1', 'level1', 'hero1-', 'item1_'));
-    document.getElementById('hero2').addEventListener('change', () => updateHeroStats('hero2', 'level2', 'hero2-', 'item2_'));
-    document.getElementById('level1').addEventListener('change', () => updateHeroStats('hero1', 'level1', 'hero1-', 'item1_'));
-    document.getElementById('level2').addEventListener('change', () => updateHeroStats('hero2', 'level2', 'hero2-', 'item2_'));
-
-    for (let i = 1; i <= 5; i++) {
-        document.getElementById(`item1_${i}`).addEventListener('change', () => updateHeroStats('hero1', 'level1', 'hero1-', 'item1_'));
-        document.getElementById(`item2_${i}`).addEventListener('change', () => updateHeroStats('hero2', 'level2', 'hero2-', 'item2_'));
+        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix));
+        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix));
+        for (let i = 1; i <= 5; i++) {
+            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix));
+        }
     }
 
-    // Initialize stats
+    // Initialize both heroes
+    initializeHero('hero1', 'level1', 'hero1-', 'item1_');
+    initializeHero('hero2', 'level2', 'hero2-', 'item2_');
+
+    // Update stats initially
     updateHeroStats('hero1', 'level1', 'hero1-', 'item1_');
     updateHeroStats('hero2', 'level2', 'hero2-', 'item2_');
 });
