@@ -133,3 +133,48 @@
     </div>
 </body>
 </html>
+<script>
+    // Sample data (Replace with actual parsed JSON from your JS files)
+    const heroData = {
+        "Kumihu": { stats: { maxHealth: 520, damage: 50 }, abilities: ["J", "K", "Charm"] },
+        "Sparrow": { stats: { maxHealth: 550, damage: 50 }, abilities: ["J", "K", "L"] }
+    };
+    const itemData = ["Wooden Sword", "Iron Ring", "Boots", "Divine Shield"];
+    const bootData = ["Boots", "Agility Boots", "Traveling Boots"];
+    
+    // Populate Dropdown Function
+    function populateDropdown(id, data) {
+        const select = document.getElementById(id);
+        select.innerHTML = ''; // Clear existing options
+        data.forEach(item => {
+            const option = document.createElement('option');
+            option.value = item;
+            option.textContent = item;
+            select.appendChild(option);
+        });
+    }
+
+    // Populate Heroes
+    populateDropdown("hero1", Object.keys(heroData));
+    populateDropdown("hero2", Object.keys(heroData));
+
+    // Populate Items and Boots
+    for (let i = 1; i <= 5; i++) {
+        populateDropdown(`item1_${i}`, itemData);
+        populateDropdown(`item2_${i}`, itemData);
+    }
+    populateDropdown("boots1", bootData);
+    populateDropdown("boots2", bootData);
+
+    // Populate Abilities when a hero is selected
+    document.getElementById("hero1").addEventListener("change", function() {
+        const selectedHero = this.value;
+        if (heroData[selectedHero]) {
+            populateDropdown("ability", heroData[selectedHero].abilities);
+        }
+    });
+
+    // Initialize abilities for first hero
+    document.getElementById("hero1").dispatchEvent(new Event("change"));
+</script>
+
