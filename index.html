@@ -10,6 +10,8 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: white;
         }
         .left-side, .right-side {
             flex: 1;
@@ -19,22 +21,37 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
+            background: #252525;
+            padding: 20px;
+            border-radius: 10px;
         }
-        .dropdown, .stats-list, .portrait, .checkbox-group {
-            margin-bottom: 10px;
+        select, input {
+            width: 100%;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            background: #333;
+            color: white;
+        }
+        .stats-list p {
+            margin: 5px 0;
         }
         .portrait {
             grid-column: span 2;
             text-align: center;
         }
         .portrait img {
-            width: 100px;
+            width: 120px;
             height: auto;
+            border-radius: 10px;
         }
         .right-side {
             display: flex;
             justify-content: center;
             align-items: center;
+            background: #292929;
+            padding: 20px;
+            border-radius: 10px;
         }
         .stats-columns {
             display: grid;
@@ -42,8 +59,10 @@
             gap: 20px;
         }
         .stats-columns div {
-            border: 1px solid #ccc;
+            border: 1px solid #444;
             padding: 10px;
+            background: #333;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -51,76 +70,42 @@
     <div class="left-side">
         <div class="dropdown">
             <label for="hero">Hero:</label>
-            <select id="hero">
-                <!-- Options -->
-            </select>
+            <select id="hero"></select>
         </div>
         <div class="dropdown">
             <label for="level">Level:</label>
-            <select id="level">
-                <!-- Options -->
-            </select>
+            <select id="level"></select>
         </div>
         <div class="dropdown">
             <label for="boots">Boots:</label>
-            <select id="boots">
-                <!-- Options -->
-            </select>
+            <select id="boots"></select>
         </div>
-        <div class="dropdown">
+        <div class="dropdown" id="items">
             <label for="item1">Item 1:</label>
-            <select id="item1">
-                <!-- Options -->
-            </select>
-        </div>
-        <div class="dropdown">
+            <select id="item1"></select>
             <label for="item2">Item 2:</label>
-            <select id="item2">
-                <!-- Options -->
-            </select>
-        </div>
-        <div class="dropdown">
+            <select id="item2"></select>
             <label for="item3">Item 3:</label>
-            <select id="item3">
-                <!-- Options -->
-            </select>
-        </div>
-        <div class="dropdown">
+            <select id="item3"></select>
             <label for="item4">Item 4:</label>
-            <select id="item4">
-                <!-- Options -->
-            </select>
-        </div>
-        <div class="dropdown">
+            <select id="item4"></select>
             <label for="item5">Item 5:</label>
-            <select id="item5">
-                <!-- Options -->
-            </select>
+            <select id="item5"></select>
         </div>
         <div class="dropdown">
             <label for="talents">Talents:</label>
-            <select id="talents">
-                <!-- Options -->
-            </select>
+            <select id="talents"></select>
         </div>
         <div class="dropdown">
             <label for="ability">Ability used:</label>
-            <select id="ability">
-                <!-- Options -->
-            </select>
-        </div>
-        <div class="dropdown">
-            <label for="hits">Number of hits:</label>
-            <select id="hits">
-                <!-- Options -->
-            </select>
+            <select id="ability"></select>
         </div>
         <div class="checkbox-group">
             <label for="crit">Crit?</label>
             <input type="checkbox" id="crit">
         </div>
         <div class="portrait">
-            <img src="hero-portrait.png" alt="Hero Portrait">
+            <img id="hero-portrait" src="hero-portrait.png" alt="Hero Portrait">
         </div>
         <div class="stats-list">
             <p>AD: <span id="ad"></span></p>
@@ -153,5 +138,38 @@
             </div>
         </div>
     </div>
+    <script>
+        const heroData = {}; // To be loaded from heroStats.txt
+        const abilityData = {}; // To be loaded from heroAbilities.txt
+        const itemData = {}; // To be loaded from itemStats.txt
+
+        function populateDropdown(id, data) {
+            const select = document.getElementById(id);
+            select.innerHTML = '';
+            Object.keys(data).forEach(key => {
+                const option = document.createElement('option');
+                option.value = key;
+                option.textContent = key;
+                select.appendChild(option);
+            });
+        }
+
+        function loadHeroStats(hero) {
+            const stats = heroData[hero];
+            document.getElementById('ad').textContent = stats?.damage || 0;
+            document.getElementById('ap').textContent = stats?.magicDef || 0;
+            document.getElementById('as').textContent = stats?.attackSpeed || 0;
+            document.getElementById('ah').textContent = stats?.hpRegen || 0;
+            document.getElementById('armor').textContent = stats?.armor || 0;
+            document.getElementById('mr').textContent = stats?.magicDef || 0;
+            document.getElementById('ms').textContent = stats?.moveSpeed || 0;
+            document.getElementById('hpr').textContent = stats?.hpRegen || 0;
+            document.getElementById('hp').textContent = stats?.maxHealth || 0;
+        }
+
+        document.getElementById('hero').addEventListener('change', (e) => {
+            loadHeroStats(e.target.value);
+        });
+    </script>
 </body>
 </html>
