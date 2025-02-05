@@ -69,8 +69,12 @@
 <body>
     <div class="left-side">
         <div class="dropdown">
-            <label for="hero">Hero:</label>
-            <select id="hero"></select>
+            <label for="hero1">Attacking Hero:</label>
+            <select id="hero1"></select>
+        </div>
+        <div class="dropdown">
+            <label for="hero2">Defending Hero:</label>
+            <select id="hero2"></select>
         </div>
         <div class="dropdown">
             <label for="level">Level:</label>
@@ -105,7 +109,10 @@
             <input type="checkbox" id="crit">
         </div>
         <div class="portrait">
-            <img id="hero-portrait" src="hero-portrait.png" alt="Hero Portrait">
+            <img id="hero-portrait1" src="hero-portrait.png" alt="Attacking Hero Portrait">
+        </div>
+        <div class="portrait">
+            <img id="hero-portrait2" src="hero-portrait.png" alt="Defending Hero Portrait">
         </div>
         <div class="stats-list">
             <p>AD: <span id="ad"></span></p>
@@ -138,38 +145,5 @@
             </div>
         </div>
     </div>
-    <script>
-        const heroData = {}; // To be loaded from heroStats.txt
-        const abilityData = {}; // To be loaded from heroAbilities.txt
-        const itemData = {}; // To be loaded from itemStats.txt
-
-        function populateDropdown(id, data) {
-            const select = document.getElementById(id);
-            select.innerHTML = '';
-            Object.keys(data).forEach(key => {
-                const option = document.createElement('option');
-                option.value = key;
-                option.textContent = key;
-                select.appendChild(option);
-            });
-        }
-
-        function loadHeroStats(hero) {
-            const stats = heroData[hero];
-            document.getElementById('ad').textContent = stats?.damage || 0;
-            document.getElementById('ap').textContent = stats?.magicDef || 0;
-            document.getElementById('as').textContent = stats?.attackSpeed || 0;
-            document.getElementById('ah').textContent = stats?.hpRegen || 0;
-            document.getElementById('armor').textContent = stats?.armor || 0;
-            document.getElementById('mr').textContent = stats?.magicDef || 0;
-            document.getElementById('ms').textContent = stats?.moveSpeed || 0;
-            document.getElementById('hpr').textContent = stats?.hpRegen || 0;
-            document.getElementById('hp').textContent = stats?.maxHealth || 0;
-        }
-
-        document.getElementById('hero').addEventListener('change', (e) => {
-            loadHeroStats(e.target.value);
-        });
-    </script>
 </body>
 </html>
