@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const option = document.createElement('option');
             option.value = i;
             option.textContent = `Level ${i}`;
-            select.appendChild(option);
+            select.appendChild(option); 
         }
         select.value = 1;
     }
@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let calculatedStats = {};
         Object.keys(heroStats[hero]).forEach(stat => {
+            if(stat === 'HPR') return calculateHPR(heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling);
             calculatedStats[stat] = heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling;
         });
 
@@ -53,9 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
-
-        // Correct HPR calculation using external formula
-        calculatedStats.HPR = calculateHPR(calculatedStats);
 
         return calculatedStats;
     }
