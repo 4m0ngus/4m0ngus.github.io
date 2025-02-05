@@ -162,12 +162,10 @@
 </html>
 <script>
     // Sample data (Replace with actual parsed JSON from your JS files)
-    const heroData = {
-        "Kumihu": { stats: { maxHealth: 520, damage: 50 }, abilities: ["J", "K", "Charm"] },
-        "Sparrow": { stats: { maxHealth: 550, damage: 50 }, abilities: ["J", "K", "L"] }
-    };
-    const itemData = ["Wooden Sword", "Iron Ring", "Boots", "Divine Shield"];
-    const bootData = ["Boots", "Agility Boots", "Traveling Boots"];
+    import { heroes } from './heroes.js';
+    import { items } from './items.js';
+    const heroData = heroes;
+    const itemData = items;
     
     // Populate Dropdown Function
     function populateDropdown(id, data) {
@@ -190,8 +188,8 @@
         populateDropdown(`item1_${i}`, itemData);
         populateDropdown(`item2_${i}`, itemData);
     }
-    populateDropdown("boots1", bootData);
-    populateDropdown("boots2", bootData);
+    populateDropdown("boots1", itemData);
+    populateDropdown("boots2", itemData);
 
     // Populate Abilities when a hero is selected
     document.getElementById("hero1").addEventListener("change", function() {
