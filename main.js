@@ -1,7 +1,8 @@
 import itemData from './itemData.js';
 import bootsData from './bootsData.js';
 import heroStats from './heroStats.js';
-import { calculateHealthRegeneration } from './formulas.js'; // Import HPR formula
+import heroAbilities from './heroAbilities.js'; // New import for talent data
+import { calculateHealthRegeneration } from './formulas.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     function populateDropdown(id, dataObj) {
@@ -35,34 +36,62 @@ document.addEventListener('DOMContentLoaded', () => {
         select.value = 1;
     }
 
+    function populateTalentDropdown(hero, level, talentPrefix) {
+        const tier1Select1 = document.getElementById(`${talentPrefix}1_1`);
+        const tier1Select2 = document.getElementById(`${talentPrefix}1_2`);
+        const tier2Select1 = document.getElementById(`${talentPrefix}2_1`);
+        const tier2Select2 = document.getElementById(`${talentPrefix}2_2`);
+
+        [tier1Select1, tier1Select2, tier2Select1, tier2Select2].forEach(select => {
+            if (select) select.innerHTML = '';
+        });
+
+        if (!heroAbilities[hero]) return;
+
+        const abilities = heroAbilities[hero];
+
+        function addOption(select, value, text) {
+            if (!select) return;
+            const option = document.createElement('option');
+            option.value = value;
+            option.textContent = text;
+            select.appendChild(option);
+        }
+
+        // Level-based talent unlocking
+        if (level >= 6) {
+            addOption(tier1Select1, "left", abilities.tier1.left);
+            addOption(tier1Select2, "right", abilities.tier1.right);
+        }
+        if (level >= 10) {
+            addOption(tier2Select1, "left", abilities.tier2.left);
+            addOption(tier2Select2, "right", abilities.tier2.right);
+        }
+    }
+
     function calculateStats(hero, level, items) {
         if (!heroStats[hero]) return null;
-    
+
         let calculatedStats = {};
         Object.keys(heroStats[hero]).forEach(stat => {
             calculatedStats[stat] = heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling;
         });
-    
-        // Apply item stats (case-sensitive fix)
+
         items.forEach(item => {
-            if (itemData[item]) {
-                Object.keys(itemData[item]).forEach(stat => {
-                    const statUpper = stat.toUpperCase(); // Convert item stat to uppercase to match heroStats
-                    if (calculatedStats[statUpper] !== undefined) {
-                        calculatedStats[statUpper] += itemData[item][stat];  
-                    }
-                });
-            }
+            if (!itemData[item]) return;
+            Object.keys(itemData[item]).forEach(stat => {
+                const statUpper = stat.toUpperCase();
+                if (calculatedStats[statUpper] !== undefined) {
+                    calculatedStats[statUpper] += itemData[item][stat];
+                }
+            });
         });
-    
-        // Correct HPR calculation using external formula
+
         calculatedStats.HPR = calculateHealthRegeneration(calculatedStats);
-    
         return calculatedStats;
     }
-    
 
-    function updateHeroStats(heroId, levelId, statPrefix, itemPrefix) {
+    function updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix) {
         const hero = document.getElementById(heroId).value;
         const level = parseInt(document.getElementById(levelId).value) || 1;
         const items = [];
@@ -79,9 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+        // Update talents when hero or level changes
+        populateTalentDropdown(hero, level, talentPrefix);
     }
 
-    function initializeHero(heroId, levelId, statPrefix, itemPrefix) {
+    function initializeHero(heroId, levelId, statPrefix, itemPrefix, talentPrefix) {
         populateDropdown(heroId, heroStats);
         populateLevelDropdown(levelId);
         populateDropdown(`${itemPrefix}1`, itemData);
@@ -91,18 +123,16 @@ document.addEventListener('DOMContentLoaded', () => {
         populateDropdown(`${itemPrefix}5`, itemData);
         populateDropdown(`${heroId.replace("hero", "boots")}`, bootsData);
 
-        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix));
-        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix));
+        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix));
+        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix));
         for (let i = 1; i <= 5; i++) {
-            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix));
+            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix));
         }
     }
 
-    // Initialize both heroes
-    initializeHero('hero1', 'level1', 'hero1-', 'item1_');
-    initializeHero('hero2', 'level2', 'hero2-', 'item2_');
+    initializeHero('hero1', 'level1', 'hero1-', 'item1_', 'talent1_');
+    initializeHero('hero2', 'level2', 'hero2-', 'item2_', 'talent2_');
 
-    // Update stats initially
-    updateHeroStats('hero1', 'level1', 'hero1-', 'item1_');
-    updateHeroStats('hero2', 'level2', 'hero2-', 'item2_');
+    updateHeroStats('hero1', 'level1', 'hero1-', 'item1_', 'talent1_');
+    updateHeroStats('hero2', 'level2', 'hero2-', 'item2_', 'talent2_');
 });
