@@ -1,16 +1,13 @@
 import itemData from './itemData.js';
 import bootsData from './bootsData.js';
 import heroStats from './heroStats.js';
-import heroAbilities from './heroAbilities.js'; // Talents data
+import heroAbilities from './heroAbilities.js';
 import { calculateHealthRegeneration } from './formulas.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     function populateDropdown(id, dataObj) {
         const select = document.getElementById(id);
-        if (!select) {
-            console.error(`Dropdown with id ${id} not found.`);
-            return;
-        }
+        if (!select) return;
         select.innerHTML = '';
         Object.keys(dataObj).forEach(key => {
             const option = document.createElement('option');
@@ -22,10 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function populateLevelDropdown(id) {
         const select = document.getElementById(id);
-        if (!select) {
-            console.error(`Dropdown with id ${id} not found.`);
-            return;
-        }
+        if (!select) return;
         select.innerHTML = '';
         for (let i = 1; i <= 12; i++) {
             const option = document.createElement('option');
@@ -41,15 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const tier1Select2 = document.getElementById(`${talentPrefix}1_2`);
         const tier2Select1 = document.getElementById(`${talentPrefix}2_1`);
         const tier2Select2 = document.getElementById(`${talentPrefix}2_2`);
-
         [tier1Select1, tier1Select2, tier2Select1, tier2Select2].forEach(select => {
             if (select) select.innerHTML = '';
         });
-
         if (!heroAbilities[hero]) return;
-
         const abilities = heroAbilities[hero];
-
         function addOption(select, value, text) {
             if (!select) return;
             const option = document.createElement('option');
@@ -57,14 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = text;
             select.appendChild(option);
         }
-
         if (level >= 6) {
-            addOption(tier1Select1, "left", abilities.tier1.left);
-            addOption(tier1Select2, "right", abilities.tier1.right);
+            addOption(tier1Select1, 'left', abilities.tier1.left);
+            addOption(tier1Select2, 'right', abilities.tier1.right);
         }
         if (level >= 10) {
-            addOption(tier2Select1, "left", abilities.tier2.left);
-            addOption(tier2Select2, "right", abilities.tier2.right);
+            addOption(tier2Select1, 'left', abilities.tier2.left);
+            addOption(tier2Select2, 'right', abilities.tier2.right);
         }
     }
 
@@ -72,9 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const abilitySelect = document.getElementById(abilityId);
         if (!abilitySelect) return;
         abilitySelect.innerHTML = '';
-
         if (!heroStats[hero] || !heroStats[hero].abilities) return;
-
         heroStats[hero].abilities.forEach(ability => {
             const option = document.createElement('option');
             option.value = ability;
@@ -85,12 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function calculateStats(hero, level, items) {
         if (!heroStats[hero]) return null;
-
         let calculatedStats = {};
         Object.keys(heroStats[hero]).forEach(stat => {
             calculatedStats[stat] = heroStats[hero][stat].base + (level - 1) * heroStats[hero][stat].scaling;
         });
-
         items.forEach(item => {
             if (!itemData[item]) return;
             Object.keys(itemData[item]).forEach(stat => {
@@ -100,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-
         calculatedStats.HPR = calculateHealthRegeneration(calculatedStats);
         return calculatedStats;
     }
@@ -112,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= 5; i++) {
             items.push(document.getElementById(`${itemPrefix}${i}`).value);
         }
-
         const stats = calculateStats(hero, level, items);
         if (stats) {
             Object.keys(stats).forEach(stat => {
@@ -122,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-
         populateTalentDropdown(hero, level, talentPrefix);
         populateAbilityDropdown(hero, abilityId);
     }
@@ -135,8 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         populateDropdown(`${itemPrefix}3`, itemData);
         populateDropdown(`${itemPrefix}4`, itemData);
         populateDropdown(`${itemPrefix}5`, itemData);
-        populateDropdown(`${heroId.replace("hero", "boots")}`, bootsData);
-
+        populateDropdown(`${heroId.replace('hero', 'boots')}`, bootsData);
         document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
         document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
         for (let i = 1; i <= 5; i++) {
@@ -146,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeHero('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1');
     initializeHero('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2');
-
     updateHeroStats('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1');
     updateHeroStats('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2');
 });
