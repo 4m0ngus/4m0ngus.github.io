@@ -1,7 +1,7 @@
 import itemData from './itemData.js';
 import bootsData from './bootsData.js';
 import heroStats from './heroStats.js';
-import heroAbilities from './heroAbilities.js'; // New import for talent data
+import heroAbilities from './heroAbilities.js'; // Talents data
 import { calculateHealthRegeneration } from './formulas.js';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
             select.appendChild(option);
         }
 
-        // Level-based talent unlocking
         if (level >= 6) {
             addOption(tier1Select1, "left", abilities.tier1.left);
             addOption(tier1Select2, "right", abilities.tier1.right);
@@ -67,6 +66,21 @@ document.addEventListener('DOMContentLoaded', () => {
             addOption(tier2Select1, "left", abilities.tier2.left);
             addOption(tier2Select2, "right", abilities.tier2.right);
         }
+    }
+
+    function populateAbilityDropdown(hero, abilityId) {
+        const abilitySelect = document.getElementById(abilityId);
+        if (!abilitySelect) return;
+        abilitySelect.innerHTML = '';
+
+        if (!heroStats[hero] || !heroStats[hero].abilities) return;
+
+        heroStats[hero].abilities.forEach(ability => {
+            const option = document.createElement('option');
+            option.value = ability;
+            option.textContent = ability;
+            abilitySelect.appendChild(option);
+        });
     }
 
     function calculateStats(hero, level, items) {
@@ -91,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return calculatedStats;
     }
 
-    function updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix) {
+    function updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId) {
         const hero = document.getElementById(heroId).value;
         const level = parseInt(document.getElementById(levelId).value) || 1;
         const items = [];
@@ -109,11 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Update talents when hero or level changes
         populateTalentDropdown(hero, level, talentPrefix);
+        populateAbilityDropdown(hero, abilityId);
     }
 
-    function initializeHero(heroId, levelId, statPrefix, itemPrefix, talentPrefix) {
+    function initializeHero(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId) {
         populateDropdown(heroId, heroStats);
         populateLevelDropdown(levelId);
         populateDropdown(`${itemPrefix}1`, itemData);
@@ -123,16 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
         populateDropdown(`${itemPrefix}5`, itemData);
         populateDropdown(`${heroId.replace("hero", "boots")}`, bootsData);
 
-        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix));
-        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix));
+        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
+        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
         for (let i = 1; i <= 5; i++) {
-            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix));
+            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
         }
     }
 
-    initializeHero('hero1', 'level1', 'hero1-', 'item1_', 'talent1_');
-    initializeHero('hero2', 'level2', 'hero2-', 'item2_', 'talent2_');
+    initializeHero('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1');
+    initializeHero('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2');
 
-    updateHeroStats('hero1', 'level1', 'hero1-', 'item1_', 'talent1_');
-    updateHeroStats('hero2', 'level2', 'hero2-', 'item2_', 'talent2_');
+    updateHeroStats('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1');
+    updateHeroStats('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2');
 });
