@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= 12; i++) {
             const option = document.createElement('option');
             option.value = i;
-            option.textContent = i;
+            option.textContent = `Level ${i}`;
             select.appendChild(option);
         }
         select.value = 1;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!abilitySelect) return;
         abilitySelect.innerHTML = '';
         if (!heroStats[hero] || !heroStats[hero].abilities) return;
-        heroStats[hero].abilities.forEach(ability => {
+        Object.keys(heroStats[hero].abilities).forEach(ability => {
             const option = document.createElement('option');
             option.value = ability;
             option.textContent = ability;
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return calculatedStats;
     }
 
-    function updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId) {
+    function updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId, portraitId) {
         const hero = document.getElementById(heroId).value;
         const level = parseInt(document.getElementById(levelId).value) || 1;
         const items = [];
@@ -105,11 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+        const portrait = document.getElementById(portraitId);
+        if (portrait) {
+            portrait.src = `images/${hero}.png`;
+            portrait.alt = `${hero} Portrait`;
+        }
         populateTalentDropdown(hero, level, talentPrefix);
         populateAbilityDropdown(hero, abilityId);
     }
 
-    function initializeHero(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId) {
+    function initializeHero(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId, portraitId) {
         populateDropdown(heroId, heroStats);
         populateLevelDropdown(levelId);
         populateDropdown(`${itemPrefix}1`, itemData);
@@ -118,15 +123,15 @@ document.addEventListener('DOMContentLoaded', () => {
         populateDropdown(`${itemPrefix}4`, itemData);
         populateDropdown(`${itemPrefix}5`, itemData);
         populateDropdown(`${heroId.replace('hero', 'boots')}`, bootsData);
-        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
-        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
+        document.getElementById(heroId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId, portraitId));
+        document.getElementById(levelId).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId, portraitId));
         for (let i = 1; i <= 5; i++) {
-            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId));
+            document.getElementById(`${itemPrefix}${i}`).addEventListener('change', () => updateHeroStats(heroId, levelId, statPrefix, itemPrefix, talentPrefix, abilityId, portraitId));
         }
     }
 
-    initializeHero('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1');
-    initializeHero('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2');
-    updateHeroStats('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1');
-    updateHeroStats('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2');
+    initializeHero('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1', 'hero-portrait1');
+    initializeHero('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2', 'hero-portrait2');
+    updateHeroStats('hero1', 'level1', 'hero1-', 'item1_', 'talent1_', 'ability1', 'hero-portrait1');
+    updateHeroStats('hero2', 'level2', 'hero2-', 'item2_', 'talent2_', 'ability2', 'hero-portrait2');
 });
