@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         for (let i = 1; i <= 12; i++) {
             const option = document.createElement('option');
             option.value = i;
-            option.textContent = `Level ${i}`;
+            option.textContent = i;
             select.appendChild(option);
         }
         select.value = 1;
